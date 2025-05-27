@@ -22,4 +22,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 			+ 	"WHERE		LOWER(obj.name) "
 			+ 	"	LIKE	LOWER(CONCAT('%', :name, '%'))")
 	Page<User> searchName(String name, Pageable pageable);
+	
+	Page<User> findByNameContainingIgnoreCase(String name, Pageable pageable); // Método pronto do Query Methods do Spring JPA
 }
