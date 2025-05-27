@@ -14,4 +14,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 			+ 	"WHERE		obj.salary >= :minSalary "
 			+ 	"	AND		obj.salary <= :maxSalary")
 	Page<User> searchSalary(Double minSalary, Double maxSalary, Pageable pageable);
+
+	@Query(		"SELECT 	obj "
+			+ 	"FROM		User obj "
+			+ 	"WHERE		LOWER(obj.name) "
+			+ 	"	LIKE	LOWER(CONCAT('%', :name, '%'))")
+	Page<User> searchName(String name, Pageable pageable);
 }
