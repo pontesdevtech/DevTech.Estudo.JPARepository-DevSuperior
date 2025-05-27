@@ -14,6 +14,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 			+ 	"WHERE		obj.salary >= :minSalary "
 			+ 	"	AND		obj.salary <= :maxSalary")
 	Page<User> searchSalary(Double minSalary, Double maxSalary, Pageable pageable);
+	
+	Page<User> findBySalaryBetween(Double minSalary, Double maxSalary, Pageable pageable); // Método pronto do Query Methods do Spring JPA
 
 	@Query(		"SELECT 	obj "
 			+ 	"FROM		User obj "

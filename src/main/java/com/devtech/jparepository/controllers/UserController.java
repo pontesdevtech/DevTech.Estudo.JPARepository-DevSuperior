@@ -35,7 +35,8 @@ public class UserController {
 	
 	@GetMapping(value = "/search-salary")
 	public ResponseEntity<Page<User>> searchBySalary(@RequestParam(defaultValue = "0") Double minSalary, @RequestParam(defaultValue = "1000000000000") Double maxSalary, Pageable pageable) {
-	    Page<User> result = repository.searchSalary(minSalary, maxSalary, pageable);
+	    //Page<User> result = repository.searchSalary(minSalary, maxSalary, pageable); // Método comum
+	    Page<User> result = repository.findBySalaryBetween(minSalary, maxSalary, pageable); // Método pronto do Query Methods do Spring JPA
 	    return ResponseEntity.ok(result);
 	}
 	
